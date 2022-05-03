@@ -1,6 +1,6 @@
 import React, {useRef, useContext} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { handleSumTotal } from '../utils/handleSumTotal';
+import handleSumTotal from '../utils/handleSumTotal';
 import AppContext from '../context/AppContext';
 import '../styles/components/Information.css';
 

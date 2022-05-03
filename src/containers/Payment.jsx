@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PayPalButton } from 'react-paypal-button-v2';
-import { handleSumTotal } from '../utils/handleSumTotal';
+import handleSumTotal from '../utils/handleSumTotal';
 import AppContext from '../context/AppContext';
 import '../styles/components/Payment.css';
 

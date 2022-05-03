@@ -4,4 +4,4 @@ const handleSumTotal = (cart) => {
     return sum;
 }
 
-export default handleSumTotal
+export default handleSumTotal;

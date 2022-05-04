@@ -3,6 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const DotenvWebpackPlugin = require('dotenv-webpack');
 const Dotenv = require('dotenv-webpack')
+const webpack = require('webpack')
+require('dotenv').config()
 
 module.exports = {
   entry: './src/index.js',
@@ -51,6 +53,12 @@ module.exports = {
       filename: 'assets/[name].css',
     }),
     new Dotenv(),
+
+    new webpack.DefinePlugin({
+      'process.env': {
+        'REACT_APP_PAYPAL_CLIENT_ID': JSON.stringify(process.env.REACT_APP_PAYPAL_CLIENT_ID)
+      }
+    })
   ],
   devServer: {
     static: path.join(__dirname, 'dist'),

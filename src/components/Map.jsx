@@ -8,7 +8,7 @@ const Map = ({ data }) => {
     }
 
     const defaultCenter = {
-        lat: data.lat, lng: data.lng
+        lat: parseFloat(data.lat), lng: parseFloat(data.lng)
     }
 
     return (

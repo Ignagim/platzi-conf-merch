@@ -3,6 +3,9 @@ on: [push]
 jobs:
   build:
     name: Build
+    run: npm run build
+      env:
+        REACT_APP_PAYPAL_CLIENT_ID: ${{ secrets.AWNiRmXc9lLJARAblOC7s4lwKAwKnWWU9pT87mzYUEDM51IT6It__Aa-RZlC1kgx4JcXUUf2_NCtcANd }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo

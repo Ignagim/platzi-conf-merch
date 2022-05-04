@@ -1,10 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const DotenvWebpackPlugin = require('dotenv-webpack');
 const Dotenv = require('dotenv-webpack')
 const webpack = require('webpack')
-require('dotenv').config()
 
 module.exports = {
   entry: './src/index.js',

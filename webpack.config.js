@@ -59,7 +59,7 @@ module.exports = {
 
     new webpack.DefinePlugin({
       'process.env': {
-        REACT_APP_PAYPAL_CLIENT_ID: JSON.stringify(process.env.REACT_APP_PAYPAL_CLIENT_ID)
+        'REACT_APP_PAYPAL_CLIENT_ID': JSON.stringify(process.env.REACT_APP_PAYPAL_CLIENT_ID)
       },
     }),
   ],

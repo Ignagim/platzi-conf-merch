@@ -1,17 +1,16 @@
-import React, { useContext, useState } from "react";
-import AppContext from "../context/AppContext";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import handleSumTotal from "../utils/handleSumTotal";
 import { PayPalButtons } from "@paypal/react-paypal-js";
+import AppContext from "../context/AppContext";
+import handleSumTotal from "../utils/handleSumTotal";
 
-const PaypalCheckoutButton = props => {
+function PaypalCheckoutButton() {
     const { state, addNewOrder } = useContext(AppContext);
-    const { cart, buyer, products} = state;
+    const { cart, buyer} = state;
     const navigate = useNavigate()
-    const { product } = props
 
     return <PayPalButtons 
-        onApprove={(data,actions) => {
+        onApprove={(data) => {
             const newOrder = {
                 buyer,
                 products: cart,
@@ -20,8 +19,7 @@ const PaypalCheckoutButton = props => {
             addNewOrder(newOrder)
             navigate('/checkout/succes')
         }}
-        createOrder={(data, actions) => {
-            return actions.order.create({
+        createOrder={(data, actions) => actions.order.create({
               purchase_units: [
                 {
                   amount: {
@@ -29,8 +27,7 @@ const PaypalCheckoutButton = props => {
                   }
                 }
               ]
-            });
-          }}
+            })}
     />
 }
 

@@ -1,16 +1,20 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const Dotenv = require('dotenv-webpack')
-const webpack = require('webpack')
+const CopyPlugin = require('copy-webpack-plugin');
+const webpack = require('webpack');
+require('dotenv').config();
 
+/** @type 
+{import('webpack').Configuration} */
 module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/'
+    publicPath:'/'
   },
+  mode: 'development',
   resolve: {
     extensions: ['.js', '.jsx'],
   },
@@ -32,7 +36,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.css$/,
+        test: /\.(s*)css$/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
@@ -50,23 +54,15 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'assets/[name].css',
     }),
-    new Dotenv({
-      path: './.env',
-      safe: true,
-      systemvars: true,
-      defaults: false,
-    }),
 
     new webpack.DefinePlugin({
-      'process.env': {
-        'REACT_APP_PAYPAL_CLIENT_ID': JSON.stringify(process.env.REACT_APP_PAYPAL_CLIENT_ID)
-      },
-    }),
+      'process.env.REACT_APP_PAYPAL_CLIENT_ID': JSON.stringify(process.env.REACT_APP_PAYPAL_CLIENT_ID),
+		}),
   ],
   devServer: {
-    static: path.join(__dirname, 'dist'),
-    compress: true,
+    allowedHosts: path.join(__dirname, 'dist'),
     historyApiFallback: true,
+    compress: true,
     port: 3005,
   },
 };

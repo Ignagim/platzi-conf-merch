@@ -11,6 +11,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: rgba(170, 170, 170, 0.164);
+  margin-top: 10px;
+  border: 1px solid rgba(204, 204, 204, 0.178);
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .Payment-item .fas {
   margin: 0 0 0 10px;
@@ -31,4 +36,8 @@
 }
 .Payment-element h4 {
   margin: 0;
+}
+
+.Payment-button{
+  margin-top: 10px;
 }

@@ -5,39 +5,28 @@ import AppContext from '../context/AppContext';
 import '../styles/components/Payment.css';
 
 const Payment = () => {
-    const { state, addNewOrder } = useContext(AppContext);
-    const { cart, buyer, products } = state;
-    const navigate = useNavigate()
-
-    return(
-        <div className="Payment">
-            <div className="Payment-content">
-                <h3>Resumen del pedido:</h3>
-                {cart.map((item) => (
-                    <div key={item.title} className="Payment-item">
-                        <h4>{item.title}</h4>
-                        <span>${item.price}</span>
-                    </div>
-                ))}
-                <div className="Payment-button">     
-                    {/* <PayPalButton 
-                        paypalOptions={paypalOptions}
-                        buttonStyles={buttonStyles}
-                        amount={handleSumTotal(cart)}
-                        onSuccess={data => handlePaymentSucces(data)}
-                        onError={error => console.log(error)}
-                        onCancel={data => console.log(data)}
-                    /> */}
-                    <PaypalCheckoutButton 
-                        product={products.price}   
-                    />
-                </div>
-            </div>
-            <div>
-
-            </div>
+  const { state, products } = useContext(AppContext);
+  const { cart } = state;
+  const navigate = useNavigate();
+  console.log(cart);
+  console.log(products);
+  return (
+    <div className="Payment">
+      <div className="Payment-content">
+        <h3>Resumen del pedido:</h3>
+        {cart.map((item) => (
+          <div key={item.attributes.title} className="Payment-item">
+            <h4>{item.attributes.title}</h4>
+            <span>${item.attributes.price}</span>
+          </div>
+        ))}
+        <div className="Payment-button">
+          <PaypalCheckoutButton product={products.attributes} />
         </div>
-    )
-}
+      </div>
+      <div></div>
+    </div>
+  );
+};
 
 export default Payment;

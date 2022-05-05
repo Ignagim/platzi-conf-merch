@@ -12,7 +12,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath:'/'
+    publicPath: '/',
   },
   mode: 'development',
   resolve: {
@@ -64,8 +64,10 @@ module.exports = {
     }),
 
     new webpack.DefinePlugin({
-      'process.env.REACT_APP_PAYPAL_CLIENT_ID': JSON.stringify(process.env.REACT_APP_PAYPAL_CLIENT_ID),
-		}),
+      'process.env.REACT_APP_PAYPAL_CLIENT_ID': JSON.stringify(
+        process.env.REACT_APP_PAYPAL_CLIENT_ID
+      ),
+    }),
   ],
   devServer: {
     allowedHosts: path.join(__dirname, 'dist'),
